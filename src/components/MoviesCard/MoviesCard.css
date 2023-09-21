@@ -1,0 +1,129 @@
+.film-card {
+  display: flex;
+  flex-direction: column;
+  max-height: 281px;
+  background-color: #222;
+  border-radius: 6px;
+  box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.08);
+}
+
+.film-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+
+    /* margin: 0;
+    padding: 0;
+    aspect-ratio: 1/1;
+
+    object-position: center;
+    
+    color: white;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: content-box;
+    z-index: 0;
+    border: none; */
+  }
+
+  .film-card__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 8px 22px 10px 16px;
+    min-height: 30px;
+  }
+
+  .film-card__description {
+    margin: 0;
+    color: #FFF;
+    font-family:'Inter',"Arial", sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  .film-card__like {
+    background-color: #222;
+    background-image: url(../../images/like.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 8px;
+    border: 0;
+    border-radius: 25px;
+    cursor: pointer;
+    pointer-events: auto;
+    /* transition: opacity .2s ease-in; */
+  }
+
+  .film-card__like:hover {
+    opacity: 0.8;
+    transition: opacity .2s ease-in;
+  }
+
+  .film-card__like_active {
+    background-image: url(../../images/redLike.svg);
+  }
+
+  .film-card__delete {
+    background-color: #222;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 8px;
+    border: 0;
+    border-radius: 25px;
+    cursor: pointer;
+    pointer-events: auto;
+    background-image: url(../../images/del.svg);
+    display: none;
+  }
+
+  .film-card__delete:hover {
+    opacity: 0.8;
+    transition: opacity .2s ease-in;
+  }
+
+  .film-card:hover {
+    cursor: pointer;
+  }
+
+  .film-card:hover .film-card__delete {
+    display: block;
+  }
+
+  .film-card__time {
+    margin: 0 16px 16px;
+    color: #8B8B8B;
+    font-family:'Inter',"Arial", sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  @media screen and (max-width: 800px) {
+    .film-card {
+      max-height: 262px;
+    }
+    .film-card__container {
+      margin: 8px 21px 7px;
+    }
+    .film-card__time {
+      margin: 0 14px 14px;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .film-card {
+      max-height: 237px;
+    }
+    .film-card__container {
+      margin: 7px 16px 6px;
+    }
+    .film-card__description {
+      font-size: 12px;
+    }
+  }

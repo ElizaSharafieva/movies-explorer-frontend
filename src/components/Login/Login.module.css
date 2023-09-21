@@ -1,0 +1,27 @@
+.login {
+  border: 0;
+  border-radius: 3px;
+  padding: 0;
+  background: #4285F4;
+  margin-top: 169px;
+  min-height: 45px;
+  color: #FFF;
+  text-align: center;
+  font-family:'Inter',"Arial", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.login:hover {
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity .2s ease-in;
+}
+
+@media screen and (max-width: 430px) {
+  .login {
+    margin-top: 257px;
+  }
+}
