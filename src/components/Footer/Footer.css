@@ -69,6 +69,7 @@
 @media screen and (max-width: 400px) {
   .footer {
     padding: 0 10px 20px;
+    padding-top: 79px;
   }
   .footer__container {
     padding-top: 30px;
@@ -87,11 +88,5 @@
   }
   .footer__title{
     font-size: 12px;
-  }
-}
-
-@media screen and (max-width: 460px) {
-  .footer {
-    padding-top: 60px;
   }
 }

@@ -4,7 +4,7 @@ function Footer() {
   return(
     <section className="footer-page">
       <div className="footer">
-        <p className="footer__title">Учебный проект Яндекс.Практикум х BeatFilm.</p>
+        <h2 className="footer__title">Учебный проект Яндекс.Практикум х BeatFilm.</h2>
         <div className='footer__container'>
           <p className="footer__year">&copy; 2020</p>
           <nav className='footer__navigation'>

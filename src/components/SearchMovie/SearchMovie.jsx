@@ -4,11 +4,11 @@ import './SearchMovie.css';
 
 function SearchMovie() {
     return(
-        <section className="search-page">
+        <main className="search-page">
             <SearchForm/>
             <FilterCheckbox/>
             <hr className='line'></hr>
-        </section>
+        </main>
     );
 
 }

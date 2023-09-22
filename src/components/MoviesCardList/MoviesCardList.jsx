@@ -1,5 +1,5 @@
 import MoviesCard from '../MoviesCard/MoviesCard';
-import cards from '../utils/cards.js'
+import cards from '../../utils/cards.js'
 import './MoviesCardList.css';
 
 function MoviesCardList({isSaved}) {

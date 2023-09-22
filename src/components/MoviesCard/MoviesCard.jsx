@@ -6,8 +6,6 @@ function MoviesCard({ card, isSaved}) {
     card.saved ? 'film-card__like film-card__like_active' : 'film-card__like'
   }`;
 
-  console.log(isSaved);
- 
   return (
     <article className="film-card">
       <img className='film-card__image' alt='фильм' src={card.src}>
@@ -15,7 +13,7 @@ function MoviesCard({ card, isSaved}) {
       <div className='film-card__container'>
         <h2 className='film-card__description'>{card.name}</h2>
         {isSaved ? (
-          <button className="film-card__delete"></button>
+          <button className="film-card__like film-card__like_type_delete"></button>
         ) : (
           <button type="button" className={cardSaveButtonClassName}></button>
         )}

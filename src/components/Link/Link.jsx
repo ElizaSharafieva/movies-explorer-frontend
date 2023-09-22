@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import "./Link.css";
-import arrow from '../../images/arrow.png';
+import arrow from '../../images/arrow.svg';
 
 function Links(props) {
   return(

@@ -5,11 +5,11 @@ import './Movies.css';
 
 function Movies() {
     return (
-        <section className='movies'>
+        <main className='movies'>
           <SearchMovie />
           <MoviesCardList isSaved={false}/>
           <Footer />
-        </section>
+        </main>
     );
 }
 

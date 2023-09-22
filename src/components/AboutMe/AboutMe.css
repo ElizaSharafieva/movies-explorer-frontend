@@ -100,6 +100,13 @@
   }
 }
 
+@media screen and (max-width: 500px) {
+  .about-me__photo {
+    min-width: 200px;
+    min-height: 300px;
+  }
+}
+
 @media screen and (max-width: 460px) {
   .about-me__page {
     padding: 66px 14px
