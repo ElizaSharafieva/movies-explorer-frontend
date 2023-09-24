@@ -1,0 +1,19 @@
+.subtitle {
+  margin: 0;
+  padding-bottom: 23px;
+  min-height: 27px;
+  max-width: 600px;
+  font-size: 22px;
+  line-height: normal;
+  font-family:'Inter',"Arial", sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.88px;
+  border-bottom: 1px solid #dadada;
+  max-width: 100%;
+}
+
+@media screen and (max-width: 460px) {
+  .subtitle {
+    font-size: 18px;
+  }
+}

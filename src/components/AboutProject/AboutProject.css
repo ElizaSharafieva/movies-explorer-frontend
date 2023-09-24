@@ -1,0 +1,132 @@
+.about-project {
+  background-color: #202020;
+}
+
+.about-project__page {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 1140px;
+  padding: 110px 70px;
+}
+
+.about-project__container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.about-project__scheme {
+  margin: 0;
+  margin-top: 110px;
+  display: flex;
+  width: 100%;
+  max-height: 36px;
+  text-align: center;
+  font-family:'Inter',"Arial", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.about-project__item-text {
+  padding: 9px 0;
+}
+
+.about-project__item-text_theme_primary {
+  width: 20%;
+  color: #000000;
+  background-color: #3DDC84;
+}
+
+.about-project__item-text_theme_secondary {
+  width: 80%;
+  background-color: #303030;
+}
+
+.about-project__scheme_type_description {
+  color: #8B8B8B;
+  font-family:'Inter',"Arial", sans-serif;
+  font-weight: 500;
+  margin-top: 14px;
+}
+
+.about-project__label {
+  margin: 0;
+}
+
+.about-project__label_theme_primary {
+  margin: 0;
+  width: 20%;
+}
+
+.about-project__label_theme_secondary {
+  margin: 0;
+  width: 80%;
+}
+
+@media screen and (max-width: 770px) {
+  .about-project__page {
+    padding: 90px 50px;
+  }
+  .about-project__container {
+    gap:27px;
+  }
+  .about-project__scheme {
+    margin-top: 88px;
+  }
+  .about-project__item-text_theme_primary {
+    width: 21%;
+  }
+  .about-project__item-text_theme_secondary {
+    width: 79%;
+  }
+  .about-project__label_theme_primary {
+    width: 21%;
+  }
+  .about-project__label_theme_secondary {
+    width: 79%;
+  }
+  .about-project__scheme:last-child {
+    margin-top: 14px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .about-project__page {
+    padding: 70px 18px 69px;
+  }
+  .about-project__container {
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .about-project__container {
+    gap: 0px;
+  }
+  .about-project__scheme {
+    margin-top: 60px;
+    font-size: 11px;
+  }
+  .about-project__item-text_theme_primary {
+    width: 30%;
+    padding: 11px;
+  }
+  .about-project__item-text_theme_secondary {
+    width: 70%;
+  }
+  .about-project__label_theme_primary {
+    width: 33%;
+  }
+  .about-project__label_theme_secondary {
+    width: 67%;
+  }
+  .about-project__scheme:last-child {
+    margin-top: 10px;
+  }
+}
+
+
+
+

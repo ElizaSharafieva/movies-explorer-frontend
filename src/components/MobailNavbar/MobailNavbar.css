@@ -1,0 +1,66 @@
+.mobail-navbar {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  min-height: 100vh;
+  max-width: 500px;
+  padding: 159px 90px;
+  box-sizing: border-box;
+  background-color: #202020;
+  z-index: 10;
+}
+
+.mobail-navbar__navigation {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobail-navbar__item {
+  margin-bottom: 28px;
+  color: #FFFFFF;
+  text-decoration: none;
+
+
+  color: #FFF;
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family:'Inter',"Arial", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.mobail-navbar__item:hover {
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity .2s ease-in;
+}
+
+.mobail-navbar__item:focus {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media screen and (max-width: 780px) {
+  .mobail-navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .profile-mobail {
+    margin-top: 700px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .mobail-navbar {
+    padding: 144px 10px;
+  }
+
+  .profile-mobail {
+    margin-top: 536px;
+  }
+}

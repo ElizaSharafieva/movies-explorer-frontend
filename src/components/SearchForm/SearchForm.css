@@ -1,0 +1,42 @@
+.search-form {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+.search-form__input {
+  color: #FFF;
+  padding: 0px;
+  padding-left: 22px;
+  min-height: 46px;
+  width: 100%;
+  border: none;
+  border-radius: 40px;
+  background: #2F2F2F;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family:'Inter',"Arial", sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 17px; /* 130.769% */
+}
+
+.search-form__button {
+  position: absolute;
+  right: 6px;
+  border: none;
+  border-radius: 50%;
+  background-image: url(../../images/find-icon.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 17px;
+}
+
+.search-form__button:hover {
+  opacity: 0.8;
+  transition: opacity .2s ease-in;
+  cursor: pointer;
+}
+
+
+
