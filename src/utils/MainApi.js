@@ -129,8 +129,7 @@ class MainApi {
 }
 
 const authConfig = {
-    baseUrl: //"https://api.pavel.nomoreparties.co"
-    'http://localhost:3000',
+    baseUrl: "https://api.films.nomoredomainsicu.ru",
     headers: {
       "Content-Type": "application/json",
     }
