@@ -1,13 +1,21 @@
+import React from "react";
+
 import Techs from "../Techs/Techs";
 import AboutProject from "../AboutProject/AboutProject";
 import AboutMe from "../AboutMe/AboutMe";
 import Promo from "../Promo/Promo";
-import Footer from "../Footer/Footer";
 import NavBar from "../NavBar/NavBar";
 import Portfolio from "../Portfolio/Portfolio";
 import './Main.css';
 
-function Main() {
+function Main({setHeaderHidden,setFooterHidden}) {
+  React.useEffect(() => {
+    setHeaderHidden(false)
+    setFooterHidden(false)
+    // setIsActive(false)
+    // handleMainLink()
+  })
+
   return (
     <main className="main">
       <Promo />
@@ -16,7 +24,6 @@ function Main() {
       <Techs />
       <AboutMe />
       <Portfolio />
-      <Footer/>
     </main>
   )
 }

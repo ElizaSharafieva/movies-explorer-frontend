@@ -15,10 +15,10 @@ function MobailNavbar() {
           Сохранённые фильмы
         </NavLink>
       </nav>
-      <div className='profile profile-mobail'>
+      <NavLink to='profile' className='profile profile-mobail'>
         <div className='profile__text'>Аккаунт</div>
         <div className="profile__icon profile__icon_default"></div>
-      </div>
+      </NavLink>
     </div>
   )
 };

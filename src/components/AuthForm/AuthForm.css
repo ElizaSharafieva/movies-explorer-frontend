@@ -29,13 +29,18 @@
   background-color: #F8F8F8;
 }
 
-.error {min-height: 13px;
+.error {
+  max-width: 396px;
+  white-space: nowrap;
+  margin-top: 5px;
+  min-height: 13px;
   color: #EE3465;
   font-family: Inter;
   font-size: 10px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  text-align: center;
 }
 
 .form {

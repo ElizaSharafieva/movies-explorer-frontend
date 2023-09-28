@@ -7,10 +7,9 @@
 }
 
 .cards__list {
-  margin: 70px auto 60px;
+  margin: 0;
   padding: 0;
-  margin: 70px auto 60px;
-  padding: 0;
+  padding: 70px 0 60px;
   max-width: 1140px;
   display: grid;
   grid-template-columns: repeat(auto-fit, 364px);
@@ -31,7 +30,7 @@
   border: none;
   border-radius: 6px;
   margin-bottom: 80px;
-  background-color: #2F2F2F;   
+  background-color: #2F2F2F;
   color: #FFF;
   text-align: center;
   font-family:'Inter',"Arial", sans-serif;
@@ -40,6 +39,17 @@
   font-weight: 500;
   line-height: normal;
   cursor: pointer;
+}
+
+.cards__error {
+  text-align: center;
+  margin: 0;
+  font-size: 22px;
+  line-height: normal;
+  font-family: 'Inter',"Arial", sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.88px;
+  max-width: 100%;
 }
 
 .cards__button:hover {
@@ -54,7 +64,7 @@
   .cards__list {
     grid-template-columns: repeat(auto-fit, 339px);
     gap: 30px;
-    margin-bottom: 80px;
+    padding-bottom: 80px;
   }
   .cards__button {
     margin-bottom: 159px;
@@ -66,7 +76,7 @@
     padding: 0 10px;
   }
   .cards__list {
-    margin: 40px auto 76px;
+    padding: 40px 0 76px;
     grid-template-columns: repeat(auto-fit, 300px);
     gap: 14px;
   }

@@ -4,13 +4,15 @@ import logo from '../../images/logo.svg';
 import MobailNavbar from '../MobailNavbar/MobailNavbar';
 
 function Header({
-  isAuthorized,
+  isLoggedIn,
   showMobailNavigation,
   toggleMobailNavigation,
   isMain}) {
-  const burgerClickHandler = () => {
-    toggleMobailNavigation(!showMobailNavigation)
-  }
+
+    const burgerClickHandler = () => {
+      toggleMobailNavigation(!showMobailNavigation)
+    }
+
   return (
     <>
       <section className={isMain ? 'header' : 'header header_black'}>
@@ -22,7 +24,7 @@ function Header({
               </NavLink>
             </div>
             {
-              isAuthorized && <nav className='navigation__container'>
+              isLoggedIn && <nav className='navigation__container'>
                 <NavLink to='movies' className='navigation__item navigation__item_mobail-hidden'>
                   Фильмы
                 </NavLink>
@@ -34,7 +36,7 @@ function Header({
           </div>
           <div className='navigation'>
             {
-              isAuthorized ?
+              isLoggedIn ?
                 <>
                   <NavLink to="profile" className='navigation__item navigation__item_mobail-hidden'>
                     <div className='profile'>

@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import { Link, NavLink } from 'react-router-dom';
 import React, { useState } from 'react';
 import useFormAndValidation from '../../utils/Validation';
@@ -7,23 +6,23 @@ import logo from '../../images/logo.svg';
 
 function AuthForm(props) {
 
-  const navigate = useNavigate();
-
   const { values, errors, isValid, handleChange, resetForm } = useFormAndValidation();
-  const [isError, setError] = useState(false);
+
+  React.useEffect(() => {
+    props.setHeaderHidden(true)
+    props.setFooterHidden(true)
+  })
 
   const handleLogin = () => {
-    navigate('/movies', { replace: true });
+    props.onLogin({ email: values.email, password: values.password });
   };
 
   const handleRegister = () => {
-    navigate('/signin');
+    props.onRegister({ name: values.name , email: values.email, password: values.password});
   };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    !isValid ?
-      setError(true):
     props.name==='register' ? handleRegister() : handleLogin();
   };
 
@@ -36,7 +35,7 @@ function AuthForm(props) {
         <h2 className='form-page__title'>
           {props.title}
         </h2>
-        <form noValidate onSubmit={handleSubmit} className='form'>
+        <form onSubmit={handleSubmit} className='form'>
           {props.name === "register" && <label className='form__label'>Имя</label>}
           {props.name === "register" &&
             <input
@@ -50,7 +49,9 @@ function AuthForm(props) {
               maxLength="30"
               onChange={handleChange}
               values={values}
+              errors={errors}
             ></input>}
+            <span className='error'>{errors.name}</span>
             <label className='form__label'>E-mail</label>
             <input
                 className='form__input'
@@ -64,6 +65,7 @@ function AuthForm(props) {
                 onChange={handleChange}
                 values={values}
             />
+            <span className='error'>{errors.email}</span>
             <label className='form__label'>Пароль</label>
             <input
                 className='form__input'
@@ -76,9 +78,11 @@ function AuthForm(props) {
                 maxLength="30"
                 onChange={handleChange}
                 values={values}
+                errors={errors}
             />
-            <p className='error'>{isError && 'Что-то пошло не так...'}</p>
-            <button type="submit" className={`form__button ${props.style}`}>
+            <span className='error'>{errors.password}</span>
+            <p className='error'>{props.error}</p>
+            <button type="submit" disabled={!isValid} className={`form__button ${props.style}`}>
               {props.button}
             </button>
         </form>
