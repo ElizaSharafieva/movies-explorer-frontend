@@ -1,10 +1,13 @@
 import React from "react";
 import { Navigate} from "react-router-dom";
 
-const ProtectedRoute = ({ element: Component, ...props }) => {
-
-  // return props.isLoggedIn ? <Component {...props} /> : <Navigate to="/signin" />;
-  return localStorage.getItem("userId")? <Component {...props} /> : <Navigate to="/signin" />;
+export const ProtectedRoute = ({ element: Component, ...props }) => {
+  return localStorage.getItem("userId") ? <Component {...props} /> : <Navigate to="/" />;
 };
 
-export default ProtectedRoute;
+export const ProtectedRouteAuth = ({ element: Component, ...props }) => {
+  return localStorage.getItem("userId") ? <Navigate to="/movies" replace/> :  <Component {...props} />
+};
+
+
+

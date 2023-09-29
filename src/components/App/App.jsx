@@ -3,7 +3,7 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import {  useLocation } from 'react-router';
 import { useState } from 'react';
 import './App.css';
-import ProtectedRoute from '../../utils/ProtectedRoute';
+import {ProtectedRoute, ProtectedRouteAuth} from '../../utils/ProtectedRoute';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
@@ -44,13 +44,12 @@ function App() {
         .getUserInformation()
         .then((userData) => {
           setCurrentUser(userData);
-          setLoggedIn(true);
         })
         .catch((err) => {
           console.log(err);
         });
     }
-  }, [isLoggedIn, navigate]);
+  }, [isLoggedIn]);
 
   React.useEffect(() => {
     const token = localStorage.getItem("userId");
@@ -64,7 +63,7 @@ function App() {
           console.log(err);
         });
       }
-  }, [navigate]);
+  }, []);
 
   const location = useLocation();
   const isMain = location.pathname === '/';
@@ -72,8 +71,7 @@ function App() {
   function handleRegister({ email, name, password }) {
     api.getRegister({ email, name, password })
       .then((res) => {
-        setResStatus(res)
-        navigate('/signin');
+        handleLogin({ email, password});
       })
       .catch(err => {
         setResStatus(err)
@@ -83,8 +81,8 @@ function App() {
   function handleLogin({ email, password }) {
     api.getLogIn({ email, password })
       .then(() => {
-        setLoggedIn(true)
-        navigate("/", { replace: true })
+        setLoggedIn(true);
+        navigate("/movies", { replace: true })
       })
       .catch((err) => {
         setResStatus(err)
@@ -96,12 +94,12 @@ function App() {
       .getlogOut(currentUser)
       .then((res) => {
         setLoggedIn(false);
-        navigate('/signin', { replace: true });
+        navigate('/movies', { replace: true });
         setValue('');
         setFilteredCards([]);
         setValueFilter(JSON.parse(localStorage.getItem('movie title')));
         setIsCheckedCheckbox(JSON.parse(localStorage.getItem('checkbox')));
-        setIsSaveCheckedCheckbox(JSON.parse(localStorage.getItem('checkbox')));
+        setIsSaveCheckedCheckbox(JSON.parse(localStorage.getItem('save-checkbox')));
         }
       )
       .catch(err => {
@@ -127,7 +125,7 @@ function App() {
           setSavedCards(movies);
         })
         .catch(err => console.log(err));}
-  }, [isLoggedIn, navigate]);
+  }, [isLoggedIn]);
 
   React.useEffect(() => {
     localStorage.setItem('checkbox', JSON.stringify(isCheckedCheckbox))
@@ -237,10 +235,10 @@ function App() {
           />} />
           <Route path="/movies" element={
             <ProtectedRoute
-              isLoggedIn={isLoggedIn}
-              element={Movies}
               setFooterHidden={setFooterHidden}
               setHeaderHidden={setHeaderHidden}
+              isLoggedIn={isLoggedIn}
+              element={Movies}
               value={value}
               isValueError={isValueError}
               isSubmitError={isSubmitError}
@@ -263,10 +261,8 @@ function App() {
               setFooterHidden={setFooterHidden}
               setHeaderHidden={setHeaderHidden}
               savedCards={savedCards}
-
               cards={cards}
               setCards={setCards}
-
               handleMovieDelete={handleMovieDelete}
               loggedIn={isLoggedIn}
               isValueError={isValueError}
@@ -285,22 +281,27 @@ function App() {
               setResStatus={setResStatus}
               loggedIn={isLoggedIn}
           />} />
-          <Route path="/signin" element={<Login
-            onLogin={handleLogin}
-            setFooterHidden={setFooterHidden}
-            setHeaderHidden={setHeaderHidden}
-            resStatus={resStatus}
-            setResStatus={setResStatus}
-          />} />
-          <Route path="/signup" element={<Register
-            onRegister={handleRegister}
-            setFooterHidden={setFooterHidden}
-            setHeaderHidden={setHeaderHidden}
-            resStatus={resStatus}
-            setResStatus={setResStatus}
-            isLoading={isLoading}
-          />}
-            />
+          <Route path="/signin" element={
+            <ProtectedRouteAuth
+              element={Login}
+              onLogin={handleLogin}
+              setFooterHidden={setFooterHidden}
+              setHeaderHidden={setHeaderHidden}
+              resStatus={resStatus}
+              setResStatus={setResStatus}
+            />}
+          />
+          <Route path="/signup" element={
+            <ProtectedRouteAuth
+              element={Register}
+              onRegister={handleRegister}
+              setFooterHidden={setFooterHidden}
+              setHeaderHidden={setHeaderHidden}
+              resStatus={resStatus}
+              setResStatus={setResStatus}
+              isLoading={isLoading}
+            />}
+          />
           <Route path="/*" element={<NotFoundPage
             setHeaderHidden={setHeaderHidden}
             setFooterHidden={setFooterHidden}

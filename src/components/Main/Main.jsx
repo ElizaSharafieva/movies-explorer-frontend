@@ -12,8 +12,6 @@ function Main({setHeaderHidden,setFooterHidden}) {
   React.useEffect(() => {
     setHeaderHidden(false)
     setFooterHidden(false)
-    // setIsActive(false)
-    // handleMainLink()
   })
 
   return (

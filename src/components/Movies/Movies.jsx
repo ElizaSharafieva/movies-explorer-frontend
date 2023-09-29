@@ -7,6 +7,11 @@ import Preloader from '../Preloader/Preloader';
 
 function Movies( props) {
 
+  React.useEffect(() => {
+    props.setHeaderHidden(false)
+    props.setFooterHidden(false)
+  })
+
   return (
     <main className='movies'>
       <SearchMovie

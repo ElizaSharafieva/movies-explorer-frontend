@@ -6,21 +6,16 @@ import './Profile.css';
 
 function Profile({setFooterHidden, setHeaderHidden, handleLogOut, changeUserInformation, resStatus, setResStatus}) {
 
+  const [isErrorSubmit, setIsErrorSubmit] = React.useState(false);
+
   React.useEffect(() => {
     setHeaderHidden(false)
     setFooterHidden(true)
-    // setIsActive(true)
-    // setProfileChange(false)
   }, [])
 
   const currentUser = React.useContext(CurrentUserContext);
 
-  const [name, setName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-
-  console.log(resStatus);
-
-  const { values, errors, isValid, setValues, handleChange } = useFormAndValidation({
+  const { values, errors, isValid, setValues, handleChange, validateEmail } = useFormAndValidation({
     name: currentUser.name,
     email: currentUser.email,
   });
@@ -39,8 +34,15 @@ function Profile({setFooterHidden, setHeaderHidden, handleLogOut, changeUserInfo
     setResStatus('')
   }, [])
 
+  React.useEffect(() => {
+    if (values.name === currentUser.name && values.email === currentUser.email) {
+      setIsErrorSubmit(true);
+    } else {
+      setIsErrorSubmit(false);
+    }
+  }, [currentUser.name, currentUser.email, values.email, values.name])
+
   const [isShowSaveButton, setShowSaveButton] = useState(false);
-  const [isError, setError] = useState(false);
 
   const handleEditButtonClick = () => {
     setShowSaveButton(true);
@@ -48,10 +50,10 @@ function Profile({setFooterHidden, setHeaderHidden, handleLogOut, changeUserInfo
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    //setError(true);
     const { name, email } = values;
     changeUserInformation({ name, email });
     setShowSaveButton(false);
+    console.log('click');
   };
 
   return (
@@ -92,14 +94,15 @@ function Profile({setFooterHidden, setHeaderHidden, handleLogOut, changeUserInfo
             maxLength="30"
             />
         </label>
-        <span className='error'>{errors.email}</span>
+        {validateEmail(values.email)===null ?  <span className='error'>Введите валидный email</span>
+            : <span className='error'>{errors.email}</span>}
         <p className = { resStatus === 200  ?  'profile-page__error profile-page__error_active' : 'profile-page__error'}>
           {errorText}
         </p>
         {isShowSaveButton ? (
             <button
               onClick={handleSubmit}
-              disabled={!isValid}
+              disabled={!isValid || isErrorSubmit || validateEmail(values.email)===null}
               type='submit'
               className='profile-page__button profile-page__button_type_submit'
             >
