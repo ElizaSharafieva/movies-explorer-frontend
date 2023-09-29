@@ -301,7 +301,7 @@ function App() {
             isLoading={isLoading}
           />}
             />
-          <Route path="*" element={<NotFoundPage
+          <Route path="/*" element={<NotFoundPage
             setHeaderHidden={setHeaderHidden}
             setFooterHidden={setFooterHidden}
           />} />
