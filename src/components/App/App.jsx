@@ -285,14 +285,14 @@ function App() {
               setResStatus={setResStatus}
               loggedIn={isLoggedIn}
           />} />
-          <Route path="/signin" element={<Login
+          <Route path="signin" element={<Login
             onLogin={handleLogin}
             setFooterHidden={setFooterHidden}
             setHeaderHidden={setHeaderHidden}
             resStatus={resStatus}
             setResStatus={setResStatus}
           />} />
-          <Route path="/signup" element={<Register
+          <Route path="signup" element={<Register
             onRegister={handleRegister}
             setFooterHidden={setFooterHidden}
             setHeaderHidden={setHeaderHidden}
@@ -301,7 +301,7 @@ function App() {
             isLoading={isLoading}
           />}
             />
-          <Route path="/*" element={<NotFoundPage
+          <Route path="*" element={<NotFoundPage
             setHeaderHidden={setHeaderHidden}
             setFooterHidden={setFooterHidden}
           />} />
