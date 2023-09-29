@@ -6,7 +6,7 @@ import logo from '../../images/logo.svg';
 
 function AuthForm(props) {
 
-  const { values, errors, isValid, handleChange, validateEmail} = useFormAndValidation();
+  const { values, errors, isValid, handleChange, validateEmail, resetForm} = useFormAndValidation();
   const [disableButton, setDisableButton] = useState(true);
 
   React.useEffect(() => {
@@ -24,9 +24,8 @@ function AuthForm(props) {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    setDisableButton(false);
+    resetForm();
     props.name==='register' ? handleRegister() : handleLogin();
-
   };
 
   return (
@@ -68,7 +67,7 @@ function AuthForm(props) {
                 onChange={handleChange}
                 values={values}
             />
-            {validateEmail(values.email)===null ?  <span className='error'>Введите валидный email</span>
+            {validateEmail(values.email)===null && values.email!=null ?  <span className='error'>Введите валидный email</span>
             : <span className='error'>{errors.email}</span>}
             <label className='form__label'>Пароль</label>
             <input
