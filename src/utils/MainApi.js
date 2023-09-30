@@ -47,7 +47,6 @@ class MainApi {
       localStorage.removeItem('movies');
       localStorage.removeItem('movie title');
       localStorage.removeItem('checkbox');
-      localStorage.removeItem('save-checkbox');
     })
   };
 

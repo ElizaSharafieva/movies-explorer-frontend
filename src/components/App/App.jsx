@@ -33,11 +33,9 @@ function App() {
   const [isSubmitError, setIsSubmitError] = React.useState(false);
   const [valueFilter, setValueFilter] = React.useState(JSON.parse(localStorage.getItem('movie title')));
   const [isCheckedCheckbox, setIsCheckedCheckbox] = React.useState(JSON.parse(localStorage.getItem('checkbox')));
-  const [isSaveCheckedCheckbox, setIsSaveCheckedCheckbox] = React.useState(JSON.parse(localStorage.getItem('save-checkbox')));
   const [filteredCards, setFilteredCards] = React.useState([]);
   const [savedCards, setSavedCards] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
-  const [isNotFound, setIsNotFound] = React.useState(false);
 
   React.useEffect(() => {
     if (isLoggedIn) {
@@ -106,7 +104,6 @@ function App() {
         setFilteredCards([]);
         setValueFilter(JSON.parse(localStorage.getItem('movie title')));
         setIsCheckedCheckbox(JSON.parse(localStorage.getItem('checkbox')));
-        setIsSaveCheckedCheckbox(JSON.parse(localStorage.getItem('save-checkbox')));
         }
       )
       .catch(err => {
@@ -115,12 +112,15 @@ function App() {
   }
 
   function changeUserInformation(data) {
+    setIsLoading(true);
     api.changeUserInformation(data)
       .then((data) => {
+        setIsLoading(false);
         setResStatus(200)
         setCurrentUser(data)
       })
       .catch((err) => {
+        setIsLoading(false);
         setResStatus(err)
       })
   };
@@ -136,8 +136,7 @@ function App() {
 
   React.useEffect(() => {
     localStorage.setItem('checkbox', JSON.stringify(isCheckedCheckbox))
-    localStorage.setItem('save-checkbox', JSON.stringify(isSaveCheckedCheckbox))
-  }, [isCheckedCheckbox, isSaveCheckedCheckbox])
+  }, [isCheckedCheckbox])
 
   function handleChangeValue(evt) {
     setValue(evt.target.value);
@@ -217,14 +216,6 @@ function App() {
     }
   }
 
-  function handleShortFilmSavedMovie() {
-    if (isSaveCheckedCheckbox) {
-      setIsSaveCheckedCheckbox(false);
-    } else {
-      setIsSaveCheckedCheckbox(true);
-    }
-  }
-
   return (
     <div className="app">
       <CurrentUserContext.Provider isLoggedIn={isLoggedIn} value={currentUser}>
@@ -274,8 +265,6 @@ function App() {
               loggedIn={isLoggedIn}
               isValueError={isValueError}
               isSubmitError={isSubmitError}
-              isCheckbox={isSaveCheckedCheckbox}
-              onClickCheckbox={handleShortFilmSavedMovie}
             />} />
           <Route path="/profile" element={
             <ProtectedRoute
@@ -287,6 +276,7 @@ function App() {
               resStatus={resStatus}
               setResStatus={setResStatus}
               loggedIn={isLoggedIn}
+              isLoading={isLoading}
           />} />
           <Route path="/signin" element={
             <ProtectedRouteAuth

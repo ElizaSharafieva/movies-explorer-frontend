@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import SearchMovie from '../SearchMovie/SearchMovie';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import './SavedMovies.css';
@@ -6,12 +7,23 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 
   function SavedMovies(props) {
 
+    const navigate = useNavigate();
+    const [isSaveCheckedCheckbox, setIsSaveCheckedCheckbox] = React.useState(false);
+
     const [filteredCards, setFilteredCards] = React.useState(props.savedCards);
     const [value, setValue] = React.useState('')
     const [isValidSubmit, setIsValidSubmit] = React.useState(false);
     const [isValueError, setIsValueError] = React.useState('Фильм');
     const [valueFilter, setValueFilter] = React.useState('');
     const [isNotFound, setIsNotFound] = React.useState(false);
+
+    function handleShortFilmSavedMovie() {
+      if (isSaveCheckedCheckbox) {
+        setIsSaveCheckedCheckbox(false);
+      } else {
+        setIsSaveCheckedCheckbox(true);
+      }
+    }
 
     function handleChangeValue(evt) {
       setValue(evt.target.value);
@@ -29,7 +41,7 @@ import MoviesCard from "../MoviesCard/MoviesCard";
     };
 
     React.useEffect(() => {
-      if (props.isCheckbox) {
+      if (isSaveCheckedCheckbox) {
         setFilteredCards(props.savedCards.filter((card) => {
           return (card.duration <= 40) && (card.nameRU.toLowerCase().includes(valueFilter.toLowerCase())
             || card.nameEN.toLowerCase().includes(valueFilter.toLowerCase()))
@@ -41,7 +53,7 @@ import MoviesCard from "../MoviesCard/MoviesCard";
           )
         }))
      }
-    }, [valueFilter, props.savedCards, props.isCheckbox])
+    }, [valueFilter, props.savedCards, isSaveCheckedCheckbox, navigate ])
 
     React.useEffect(() => {
       if (filteredCards.length === 0 && props.savedCards.length !== 0) {
@@ -55,8 +67,8 @@ import MoviesCard from "../MoviesCard/MoviesCard";
       <section className='movies'>
         <SearchMovie
           setCards={props.setCards}
-          onClickCheckbox={props.onClickCheckbox}
-          isCheckbox={props.isCheckbox}
+          onClickCheckbox={handleShortFilmSavedMovie}
+          isCheckbox={isSaveCheckedCheckbox}
           cards={filteredCards}
           value={value}
           filteredCards={filteredCards}

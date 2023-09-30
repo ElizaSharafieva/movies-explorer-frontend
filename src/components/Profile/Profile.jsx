@@ -4,7 +4,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import useFormAndValidation from '../../utils/Validation';
 import './Profile.css';
 
-function Profile({setFooterHidden, setHeaderHidden, handleLogOut, changeUserInformation, resStatus, setResStatus}) {
+function Profile({setFooterHidden, setHeaderHidden, handleLogOut, changeUserInformation, resStatus, setResStatus, isLoading}) {
 
   const [isErrorSubmit, setIsErrorSubmit] = React.useState(false);
 
@@ -102,7 +102,7 @@ function Profile({setFooterHidden, setHeaderHidden, handleLogOut, changeUserInfo
         {isShowSaveButton ? (
             <button
               onClick={handleSubmit}
-              disabled={!isValid || isErrorSubmit || validateEmail(values.email)===null}
+              disabled={!isValid || isErrorSubmit || validateEmail(values.email)===null || isLoading}
               type='submit'
               className='profile-page__button profile-page__button_type_submit'
             >
