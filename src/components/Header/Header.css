@@ -81,6 +81,12 @@
   padding: 22px;
 }
 
+.burger-menu__item:hover {
+  opacity: 0.8;
+  transition: opacity .2s ease-in;
+  cursor: pointer;
+}
+
 .burger-menu__cross {
   border: 0;
   background: 0;
