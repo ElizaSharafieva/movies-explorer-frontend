@@ -2,7 +2,7 @@ import React from 'react';
 import AuthForm from '../AuthForm/AuthForm';
 import './Register.css';
 
-function Register({ setHeaderHidden, setFooterHidden, onRegister, resStatus, setResStatus}) {
+function Register({ setHeaderHidden, setFooterHidden, onRegister, resStatus, setResStatus, isLoading}) {
 
   React.useEffect(() => {
     setResStatus('')
@@ -28,6 +28,7 @@ function Register({ setHeaderHidden, setFooterHidden, onRegister, resStatus, set
       setResStatus={setResStatus}
       onRegister={onRegister}
       error={errorText}
+      isLoading={isLoading}
     />
   )
 }

@@ -12,4 +12,4 @@
 
 Ссылка на приложение https://films.nomoredomainsicu.ru
 
-Ccылка на реквест https://github.com/SorokinPavel/movies-explorer-frontend/pull/2
+Ccылка на реквест https://github.com/SorokinPavel/movies-explorer-frontend/pull/4

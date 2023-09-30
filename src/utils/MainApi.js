@@ -129,7 +129,8 @@ class MainApi {
 }
 
 const authConfig = {
-    baseUrl: "https://api.films.nomoredomainsicu.ru",
+    baseUrl: //"http://localhost:3000",
+    "https://api.films.nomoredomainsicu.ru",
     headers: {
       "Content-Type": "application/json",
     }

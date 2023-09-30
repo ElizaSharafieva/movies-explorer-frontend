@@ -2,7 +2,7 @@ import React from 'react';
 import AuthForm from '../AuthForm/AuthForm';
 import './Login.css';
 
-function Login({setHeaderHidden, setFooterHidden, onLogin, resStatus, setResStatus}) {
+function Login({setHeaderHidden, setFooterHidden, onLogin, resStatus, setResStatus, isLoading}) {
 
   React.useEffect(() => {
     setResStatus('')
@@ -26,6 +26,7 @@ function Login({setHeaderHidden, setFooterHidden, onLogin, resStatus, setResStat
       setFooterHidden={setFooterHidden}
       onLogin={onLogin}
       error={errorText}
+      isLoading={isLoading}
     />
   );
 

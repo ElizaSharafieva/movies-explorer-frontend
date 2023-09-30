@@ -69,22 +69,28 @@ function App() {
   const isMain = location.pathname === '/';
 
   function handleRegister({ email, name, password }) {
+    setIsLoading(true);
     api.getRegister({ email, name, password })
-      .then((res) => {
-        handleLogin({ email, password});
-      })
-      .catch(err => {
-        setResStatus(err)
-      })
+        .then((res) => {
+          handleLogin({ email, password});
+          setIsLoading(false);
+        })
+        .catch(err => {
+          setIsLoading(false);
+          setResStatus(err);
+        })
   };
 
   function handleLogin({ email, password }) {
+    setIsLoading(true);
     api.getLogIn({ email, password })
       .then(() => {
         setLoggedIn(true);
+        setIsLoading(false);
         navigate("/movies", { replace: true })
       })
       .catch((err) => {
+        setIsLoading(false);
         setResStatus(err)
       })
   };
@@ -289,6 +295,7 @@ function App() {
               setHeaderHidden={setHeaderHidden}
               resStatus={resStatus}
               setResStatus={setResStatus}
+              isLoading={isLoading}
             />}
           />
           <Route path="/signup" element={
