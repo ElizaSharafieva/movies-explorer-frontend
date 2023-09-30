@@ -37,6 +37,7 @@ function App() {
   const [filteredCards, setFilteredCards] = React.useState([]);
   const [savedCards, setSavedCards] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
+  const [isNotFound, setIsNotFound] = React.useState(false);
 
   React.useEffect(() => {
     if (isLoggedIn) {
